@@ -90,6 +90,12 @@
       margin-top: 20px;
       width: 100%;
     }
+    .arrow {
+      position: absolute;
+      top: 20px;
+      left: 10px;
+      font-size: 18px;
+    }
   </style>
 </head>
 <body>
@@ -101,6 +107,7 @@
   <div id="output" placeholder="النص العربي يظهر هنا..."></div>
   <button id="copyBtn">نسخ النص العربي</button>
   <button id="darkModeBtn">تفعيل الوضع الداكن</button>
+  <div class="arrow">←</div>
 </div>
 
 <script>
@@ -122,7 +129,8 @@
     for (let char of text) {
       result += map[char] || char; // يحافظ على المسافات وعلامات الترقيم
     }
-    output.textContent = result;
+    // عكس النص بحيث يظهر بالعربية من اليمين لليسار
+    output.textContent = result.split('').reverse().join('');
   });
 
   copyBtn.addEventListener("click", () => {
