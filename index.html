@@ -100,7 +100,6 @@
       background: #45a049;
     }
 
-    /* زر الوضع الداكن (الهلال) */
     #darkModeBtn {
       position: fixed;
       top: 20px;
@@ -143,7 +142,6 @@
 </head>
 <body>
 
-  <!-- زر الوضع الداكن (الهلال) -->
   <button id="darkModeBtn">
     <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/a9/Crescent_Moon_Icon.svg/1200px-Crescent_Moon_Icon.svg.png" alt="هلال">
   </button>
@@ -175,8 +173,8 @@
       for (let char of text) {
         result += map[char] || char; // يحافظ على المسافات وعلامات الترقيم
       }
-      // عكس النص بحيث يظهر بالعربية من اليمين لليسار
-      output.textContent = result.split('').reverse().join('');
+      // إزالة عملية عكس النص
+      output.textContent = result;
     });
 
     copyBtn.addEventListener("click", () => {
