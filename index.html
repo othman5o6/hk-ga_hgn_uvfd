@@ -102,6 +102,10 @@
       background: #45a049;
     }
 
+    button:active {
+      background-color: #388e3c;
+    }
+
     #darkModeBtn {
       position: fixed;
       top: 20px;
@@ -211,13 +215,15 @@
       toggleModeBtn.textContent = isArabicToEnglish ? "تحويل إلى الوضع المعاكس" : "تحويل إلى عربي → الإنجليزي";
       input.value = '';
       output.textContent = '';
+      
+      // تغيير النص عند الضغط على الزر
+      toggleModeBtn.style.backgroundColor = isArabicToEnglish ? "#4caf50" : "#f44336";  // تغيير اللون عند الضغط
     });
 
     darkModeBtn.addEventListener("click", () => {
       document.body.classList.toggle("dark-mode");
       const isDark = document.body.classList.contains("dark-mode");
 
-      // تغيير الصورة باستخدام src مباشرة
       const moonIcon = "https://cdn-icons-png.flaticon.com/128/3901/3901848.png";  // صورة الهلال
       const sunIcon = "https://cdn-icons-png.flaticon.com/128/10484/10484158.png";  // صورة الشمس
 
@@ -226,7 +232,4 @@
     });
   </script>
   
-  <p>سويت هذا الموقع بسبب اني كنت معصب لأن اكثر من مره اكتب كلام و اكتشف اني محول الى اللغة الانجليزية فا قررت اني اسوي هذا الموقع عشان يحل المشكلة</p>
-  <left ><text>أصدار :1.0 </text></left>
-</body>
-</html>
+  <p>سويت هذا الموقع بسبب اني كنت معصب لأن اكثر من مره اكتب كلام
