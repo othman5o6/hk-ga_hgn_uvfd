@@ -2,18 +2,11 @@
 <html lang="ar">
 <head>
   <meta charset="UTF-8">
-
- <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <style>
-  body {
-    اهلا بك في EngtoAr 
-</style>
-
-
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>محول الكيبورد الإنجليزي → عربي والعكس</title>
   <style>
     body {
-      font-family: Arial, sans-serif;
+      font-family: "Amiri", serif;
       background: #f0f4f8;
       display: flex;
       justify-content: center;
@@ -68,10 +61,12 @@
       width: 100%;
       height: 100px;
       font-size: 18px;
-      padding: 10px;
-      border-radius: 8px;
+      padding: 12px;
+      border-radius: 12px;
       border: 1px solid #ccc;
+      box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
       resize: vertical;
+      font-family: "Amiri", serif;
     }
 
     #output {
@@ -166,6 +161,7 @@
     
     <div>
       <button id="toggleModeBtn">تحويل إلى الوضع المعاكس</button>
+      <button id="reverseTranslationBtn">ترجمة معاكسة</button>
     </div>
   </div>
 
@@ -191,6 +187,7 @@
     const copyBtn = document.getElementById("copyBtn");
     const darkModeBtn = document.getElementById("darkModeBtn");
     const toggleModeBtn = document.getElementById("toggleModeBtn");
+    const reverseTranslationBtn = document.getElementById("reverseTranslationBtn");
 
     input.addEventListener("input", () => {
       let text = input.value;
@@ -203,14 +200,25 @@
 
     copyBtn.addEventListener("click", () => {
       navigator.clipboard.writeText(output.textContent)
-        .then(() => alert("تم نسخ النص!"))
+        .then(() => {
+          alert("تم نسخ النص!");
+          copyBtn.textContent = "تم النسخ!";
+          setTimeout(() => { copyBtn.textContent = "نسخ النص"; }, 2000);
+        })
         .catch(() => alert("حدث خطأ أثناء النسخ."));
     });
 
     toggleModeBtn.addEventListener("click", () => {
       isArabicToEnglish = !isArabicToEnglish;
-      toggleModeBtn.textContent = isArabicToEnglish ? "تحويل إلى الوضع المعاكس" : "تحويل إلى عربي → الانجليزي";
+      toggleModeBtn.textContent = isArabicToEnglish ? "تحويل إلى الوضع المعاكس" : "تحويل إلى عربي → الإنجليزي";
       input.value = '';
+      output.textContent = '';
+    });
+
+    reverseTranslationBtn.addEventListener("click", () => {
+      isArabicToEnglish = !isArabicToEnglish;
+      toggleModeBtn.textContent = isArabicToEnglish ? "تحويل إلى الوضع المعاكس" : "تحويل إلى عربي → الإنجليزي";
+      input.value = output.textContent;  // نسخ النص من الناتج إلى المدخل
       output.textContent = '';
     });
 
@@ -226,8 +234,5 @@
       darkModeBtn.querySelector("img").src = icon;
     });
   </script>
-<p>سويت هذا الموقع بسبب اني كنت معصب لأن اكثر من مره اكتب كلام و اكتشف اني محول الى اللغة الانجليزية فا قررت اني اسوي هذا الموقع عشان يحل المشكلة </p>
-<left ><text>أصدار :1.0 </text>
-
-</body>
-</html>
+  
+  <p>سويت هذا الموقع بسبب اني كنت معصب
